@@ -25,7 +25,8 @@ def run_mcmc(fname_mc,fname_drt,fname_out,startpos,startgrand,stepsize,num_it,ch
     lst_chunk = num_it % chunksize
     print 'Running mcmc'
     print 'Number of chunks: {}'.format(num_chunks + 1)
-    for ichnk in tqdm(range(num_chunks)):
+    #for ichnk in tqdm(range(num_chunks)):
+    for ichnk in range(num_chunks):
         start = time.time()
         a0,a1,a2,sy,lk,na = metropolis_systematics(data_mc,data_drt,startpos,startgrand,stepsize,chunksize)
         startpos = a0[-1],a1[-1],a2[-1]

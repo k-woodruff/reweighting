@@ -32,7 +32,7 @@ def rwgt_ratio_mc(deltas,lambdaA,sA,Q2vec,data_mc,grand):
 
     pool.close()
     pool.join()
-
+  
     # systematic proposals
     # DIC
     dicrand = np.abs(grand[0])
@@ -64,7 +64,9 @@ def rwgt_ratio_mc(deltas,lambdaA,sA,Q2vec,data_mc,grand):
                       + np.log(drt_1) \
                       + np.log(kf_1)
     ln_weight_gibbs_2 = np.log(dic_2) + np.log(spe_2) + np.log(flux_2) \
-                      + np.log(mec_2) + np.log(drt_2) + np.log(kf_2)
+                      + np.log(mec_2) \
+                      + np.log(drt_2) \
+                      + np.log(kf_2)
 
     ln_weight_1 = np.log(axial_weight_1) + ln_weight_gibbs_1
     ln_weight_2 = np.log(data_2['ccqe_wt'].values) + np.log(data_2['mec_wt'].values) + ln_weight_gibbs_2
